@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iredbook.mapper.FansMapper" >
+  <resultMap id="BaseResultMap" type="com.iredbook.pojo.Fans" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="vloger_id" property="vlogerId" jdbcType="VARCHAR" />
+    <result column="fan_id" property="fanId" jdbcType="VARCHAR" />
+    <result column="is_fan_friend_of_mine" property="isFanFriendOfMine" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

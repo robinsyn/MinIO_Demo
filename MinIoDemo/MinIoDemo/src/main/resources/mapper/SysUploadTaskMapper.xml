@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iredbook.mapper.SysUploadTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.iredbook.pojo.SysUploadTask" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="upload_id" property="uploadId" jdbcType="VARCHAR" />
+    <result column="file_identifier" property="fileIdentifier" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="bucket_name" property="bucketName" jdbcType="VARCHAR" />
+    <result column="object_key" property="objectKey" jdbcType="VARCHAR" />
+    <result column="total_size" property="totalSize" jdbcType="BIGINT" />
+    <result column="chunk_size" property="chunkSize" jdbcType="BIGINT" />
+    <result column="chunk_num" property="chunkNum" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

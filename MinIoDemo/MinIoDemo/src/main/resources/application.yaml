@@ -1,0 +1,32 @@
+server:
+  port: 3080
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource      # 数据源的类型，可以更改为其他的数据源配置，比如druid
+    driver-class-name: com.mysql.cj.jdbc.Driver      # mysql/MariaDB 的数据库驱动类名称
+    url: jdbc:mysql://localhost:3306/my-red-book?characterEncoding=utf-8&serverTimezone=Hongkong
+    username: root
+    password: root
+
+# 整合mybatis
+mybatis:
+  type-aliases-package: com.iredbook.pojo       # 所有pojo类所在的包路径
+  mapper-locations: classpath:mapper/*.xml    # mapper映射文件
+
+# 通用mapper工具的配置
+mapper:
+  mappers: com.iredbook.my.mapper.MyMapper      # 配置MyMapper，包含了一些封装好的CRUD方法
+  not-empty: false                            # 在进行数据库操作的时候，username != null 是否会追加 username != ''
+  identity: MYSQL
+
+# MinIO 配置
+minio:
+  endpoint: http://192.168.150.129:9000      # MinIO服务地址
+  fileHost: http://192.168.150.129:9000      # 文件地址host
+  bucketName: iredbook                      # 存储桶bucket名称
+  accessKey: root                         # 用户名
+  secretKey: root123456                     # 密码
+
+custom:
+  minio:
+    bucket: iredbook

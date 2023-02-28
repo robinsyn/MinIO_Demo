@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iredbook.mapper.FansMapperCustom" >
+  
+    <select id="queryMyFollows" resultType="com.iredbook.vo.VlogerVO" parameterType="map">
+
+        SELECT
+            u.id as vlogerId,
+            u.nickname as nickname,
+            u.face as face
+        FROM
+            fans f
+        LEFT JOIN
+            users u
+        ON
+            f.vloger_id = u.id
+        WHERE
+            f.fan_id = #{paramMap.myId}
+        ORDER BY
+            u.nickname
+        ASC
+
+    </select>
+
+  <select id="queryMyFans" resultType="com.iredbook.vo.FansVO" parameterType="map">
+
+        SELECT
+            u.id as fanId,
+            u.nickname as nickname,
+            u.face as face
+        FROM
+            fans f
+        LEFT JOIN
+            users u
+        ON
+            f.fan_id = u.id
+        WHERE
+            f.vloger_id = #{paramMap.myId}
+        ORDER BY
+            u.nickname
+        ASC
+
+    </select>
+
+</mapper>

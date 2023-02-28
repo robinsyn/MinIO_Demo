@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iredbook.mapper.CommentMapperCustom" >
+
+  <!--
+      FIXME
+      思考：阿里规范明确规定不能超过三表关联，这里达到了四张表
+      我们应该如何优化呢？使得sql脚本查询表位三表或者两表查询
+      又或者说我们能不能不使用数据库，使用别的手段（中间件）来实现呢？
+   -->
+  <select id="getCommentList" parameterType="map" resultType="com.iredbook.vo.CommentVO">
+
+      SELECT
+          c.id as commentId,
+          c.vlog_id   as vlogId,
+          u.id as vlogerId,
+          u.nickname as commentUserNickname,
+          u.face as commentUserFace,
+          c.father_comment_id as fatherCommentId,
+          c.comment_user_id as commentUserId,
+          c.content as content,
+          c.like_counts as likeCounts,
+          fu.nickname as replyedUserNickname,
+          c.create_time as createTime
+      FROM
+          `comment` as c
+      LEFT JOIN
+          users as u
+      ON
+          c.comment_user_id = u.id
+      LEFT JOIN
+          `comment` as fc
+      ON
+          c.father_comment_id = fc.id
+      LEFT JOIN
+          users as fu
+      ON
+          fc.comment_user_id = fu.id
+      WHERE
+          c.vlog_id = #{paramMap.vlogId}
+      ORDER BY
+          c.like_counts DESC,
+          c.create_time DESC
+  </select>
+
+</mapper>

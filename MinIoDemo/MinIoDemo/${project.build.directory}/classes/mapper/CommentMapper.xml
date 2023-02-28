@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iredbook.mapper.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.iredbook.pojo.Comment" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="vloger_id" property="vlogerId" jdbcType="VARCHAR" />
+    <result column="father_comment_id" property="fatherCommentId" jdbcType="VARCHAR" />
+    <result column="vlog_id" property="vlogId" jdbcType="VARCHAR" />
+    <result column="comment_user_id" property="commentUserId" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="like_counts" property="likeCounts" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>
